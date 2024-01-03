@@ -10,6 +10,16 @@ const getAllSuperheroes = async () => {
   }
 };
 
+const getSuperheroByAlias = async (alias) => {
+  try {
+    const result = await SuperHeroModel.findOne({ alias });
+    return result;
+  } catch (error) {
+    throw new Error({ error: error.message });
+  }
+};
+
 export {
-  getAllSuperheroes
+  getAllSuperheroes,
+  getSuperheroByAlias
 };

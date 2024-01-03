@@ -8,7 +8,10 @@ const superheroSchema = new mongoose.Schema({
   color: { type: String, required: true }
 });
 
-const SuperHeroModel = new  mongoose.model('Superhero', superheroSchema);
+const SuperHeroModel = new  mongoose.model('Superhero', 
+  superheroSchema, 
+  'superhero_api'
+);
 
 export {
   SuperHeroModel

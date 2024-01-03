@@ -21,6 +21,10 @@ module.exports = {
     'ecmaVersion': 'latest',
     'sourceType': 'module'
   },
+  'globals': {
+    global: true,
+    process: true
+  },
   'rules': {
     'indent': [
       'error',
@@ -45,7 +49,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 80,
+        code: 120,
         ignoreUrls: true,
         ignorePattern: 'process\\.env\\.'
       }

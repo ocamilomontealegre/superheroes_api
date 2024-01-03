@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import * as logger from '../utils/logger.js';
 
 // Database url
-const url = `mongodb+srv://ocamilomontealegre:${process.env.DB_PASSWORD}@pokemon-cluster.y3sj8ew.mongodb.net/Restful_APIs?retryWrites=true&w=majority`;
+const url = `mongodb+srv://ocamilomontealegre:${process.env.DB_PASSWORD}@pokemon-cluster.y3sj8ew.mongodb.net/Restful_APIs`;
 
 mongoose.set('strictQuery', false);
 
