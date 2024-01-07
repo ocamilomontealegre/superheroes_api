@@ -17,4 +17,7 @@ router.get('/api/superheroes/:alias', controller.getSuperheroByAlias);
 // Create new superhero entry
 router.post('/api/superheroes/create', controller.createSuperheroEntry);
 
+// Get superhero picture
+router.get('/api/superheroes/picture/:alias', controller.getSuperheroPicture);
+
 export default router;

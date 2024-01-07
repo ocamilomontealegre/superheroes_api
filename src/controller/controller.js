@@ -62,8 +62,37 @@ const createSuperheroEntry = async (req, res) => {
   }
 };
 
+// Get superhero images
+const getSuperheroPicture = async (req, res) => {
+  console.log("🦖 ~ file: controller.js:68 ~ getSuperheroPicture ~ req.params:", req.params)
+  
+  const { alias = 'superman' } = req.params;
+  if (!alias) {
+    logger.error(req.method, req.url, { error: 'No alias found as a request param' });
+    res.status(400).json({ error: 'No alias found as a request param' });
+    return;
+  }
+
+  try {
+    const result = await services.getSuperheroPicture(alias);
+
+    if (!result) {
+      logger.error(req.method, req.url, { error: 'Error fetching the data' });
+      res.status(400).json({ error: 'Error fetching the data' });
+      return;
+    }
+
+    logger.info(req.method, req.url, result);
+    res.status(200).json({ pictureUrl: result });
+  } catch (error) {
+    logger.error(req.method, req.url, error);
+    res.status(500).json({ error: 'Error getting superhero data' });
+  }
+};
+
 export {
   getAllSuperheroes,
   getSuperheroByAlias,
-  createSuperheroEntry
+  createSuperheroEntry,
+  getSuperheroPicture
 };
