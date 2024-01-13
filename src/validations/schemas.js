@@ -1,16 +1,15 @@
 import Joi from 'joi';
 
-// Alias Property
-const alias = Joi.string().regex(/^[a-zA-Z]+$/).required().messages({
+// Real Name Property
+const realName = Joi.string().required().messages({
   'string.base': 'It should be a string',
-  'string.pattern.base': 'Invalid characters in alias. Only letters allowed.',
+  'string.pattern.base': 'Invalid characters in realName. Only letters allowed.',
   'any.required': 'Alias is required.'
 });
 
-// Real Name Property
-const realName = Joi.string().regex(/^[a-zA-Z]+$/).required().messages({
+// Alias Property
+const alias = Joi.string().required().messages({
   'string.base': 'It should be a string',
-  'string.pattern.base': 'Invalid characters in alias. Only letters allowed.',
   'any.required': 'Alias is required.'
 });
 
@@ -22,7 +21,7 @@ const powers = Joi.array().min(1).required().messages({
 });
 
 // Description Property
-const description = Joi.string().alphanum().min(10).required().messages({
+const description = Joi.string().min(10).required().messages({
   'string.base': 'Description should be a string.',
   'string.alphanum': 'Description should only contain alphanumeric characters.',
   'string.min': 'Description must be at least 10 characters long.',
@@ -30,7 +29,7 @@ const description = Joi.string().alphanum().min(10).required().messages({
 });
 
 // Color property
-const color = Joi.string().regex(/^[a-zA-Z]+$/).min(4).required().messages({
+const color = Joi.string().regex(/^[a-zA-Z]+$/).min(3).required().messages({
   'string.base': 'Color should be a string.',
   'string.alphanum': 'Invalid characters in Color. Only letters allowed.',
   'string.min': 'Color must be at least 4 characters long.',

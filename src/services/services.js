@@ -21,6 +21,16 @@ const getSuperheroByAlias = async (alias) => {
   }
 };
 
+// Create new superhero entry in the database
+const createSuperheroEntry = async (superheroData) => {
+  try {
+    const result = await SuperHeroModel.create(superheroData);
+    return result;
+  } catch (error) {
+    throw new Error({ error: error.message });
+  }
+}
+
 // Get superhero picture
 const getSuperheroPicture = async (alias) => {
   const baseUrl = 'https://api.giphy.com/v1/gifs/translate?api_key=pDG7aKNDRchZCPELriCXd2pVtXknNFno&s=';
@@ -36,5 +46,6 @@ const getSuperheroPicture = async (alias) => {
 export {
   getAllSuperheroes,
   getSuperheroByAlias,
+  createSuperheroEntry,
   getSuperheroPicture
 };

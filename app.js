@@ -14,6 +14,8 @@ app.use(cors());
 // Parse incoming requests with URL-encoded payloads
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.json());
+
 // Use API routes
 app.use(routes);
 

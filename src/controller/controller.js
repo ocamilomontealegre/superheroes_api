@@ -35,7 +35,7 @@ const getSuperheroByAlias = async (req, res) => {
 
   try {
     const result = await services.getSuperheroByAlias(alias);
-
+    
     if (!result) {
       logger.error(req.method, req.url);
       res.status(400).json({ error: 'Invalid response from the service' });
@@ -59,13 +59,29 @@ const createSuperheroEntry = async (req, res) => {
   if (validation.statusCode !== 200) {
     logger.error(req.method, req.url, { error: validation.error });
     res.status(validation.statusCode).json({ error: validation.error });
+    return;
+  }
+
+  try {
+    const result = await services.createSuperheroEntry(superheroData);
+
+    if (!result) {
+      logger.error(req.method, req.url);
+      res.status(400).json({ error: 'Invalid response from the service' });
+      return;
+    }
+
+    logger.info(req.method, req.url, result);
+
+    res.status(200).json(result);
+  } catch (error) {
+    logger.error(req.method, req.url, error);
+    res.status(500).json({ error: 'Error creating the new entry' });
   }
 };
 
 // Get superhero images
 const getSuperheroPicture = async (req, res) => {
-  console.log("🦖 ~ file: controller.js:68 ~ getSuperheroPicture ~ req.params:", req.params)
-  
   const { alias = 'superman' } = req.params;
   if (!alias) {
     logger.error(req.method, req.url, { error: 'No alias found as a request param' });

@@ -1,4 +1,5 @@
 const validateData = (object, schema) => {
+  console.log('👽 ~ file: validations.js:2 ~ validateData ~ object:', object);
   const result = schema.validate(object);
 
   return (result.error) 
